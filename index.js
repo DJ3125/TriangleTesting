@@ -9,6 +9,12 @@ class Point {
     }
     getX() { return this.x; }
     getY() { return this.y; }
+    addVector({ x, y }) {
+        return new Point(this.x + x, this.y + y);
+    }
+    subtractVector({ x, y }) {
+        return new Point(this.x - x, this.y - y);
+    }
 }
 function initialize() {
     console.log("Hello World!!!");
@@ -20,11 +26,10 @@ class Triangle {
     constructor(p1, p2, p3) {
         this.points = [p1, p2, p3];
     }
-    isInside({ x, y }) {
-        const newX = x - this.points[0].x;
-        const newY = y - this.points[0].y;
-        const vector1 = { x: this.points[1].x - this.points[0].x, y: this.points[1].y - this.points[0].y };
-        const vector2 = { x: this.points[2].x - this.points[0].x, y: this.points[2].y - this.points[0].y };
+    isInside(vector) {
+        const newVector = vector.subtractVector(this.points[0]);
+        const vector1 = this.points[1].subtractVector(this.points[0]);
+        const vector2 = this.points[2].subtractVector(this.points[0]);
         return false;
     }
 }

@@ -17,8 +17,16 @@ class Point {
     this.y = y;
   }  
 
-  getX(){return this.x;}
-  getY(){return this.y;}
+  public getX(): number{return this.x;}
+  public getY(): number{return this.y;}
+
+  public addVector({x, y}: Point): Point{
+    return new Point(this.x + x, this.y+y);
+  }
+
+  public subtractVector({x, y}: Point): Point{
+    return new Point(this.x - x, this.y - y);
+  }
 }
 
 function initialize():void{
@@ -29,17 +37,16 @@ function initialize():void{
 }
 
 class Triangle {
-  private points: point[];
+  private points: Point[];
 
-  constructor(p1: point, p2: point, p3: point){
+  constructor(p1: Point, p2: Point, p3: Point){
     this.points = [p1, p2, p3];
   }
   
-  public isInside({x, y}: point): boolean{
-    const newX = x - this.points[0].x;
-    const newY = y - this.points[0].y;
-    const vector1 = {x: this.points[1].x - this.points[0].x, y: this.points[1].y - this.points[0].y};
-    const vector2 = {x: this.points[2].x - this.points[0].x, y: this.points[2].y - this.points[0].y};
+  public isInside(vector: Point): boolean{
+    const newVector: Point = vector.subtractVector(this.points[0]);
+    const vector1: Point = this.points[1].subtractVector(this.points[0]);
+    const vector2: Point = this.points[2].subtractVector(this.points[0]);
     return false;
   }
 }
