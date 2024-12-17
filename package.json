@@ -1,8 +1,8 @@
 {
   "name": "triangletesting",
   "version": "1.0.0",
-  "description": "Testing hitboaxes for 2D triangles",
-  "main": "index.js",
+  "description": "Testing hitboxes for 2D triangles",
+  "main": "out/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,5 +10,10 @@
   "license": "ISC",
   "devDependencies": {
     "typescript": "^5.7.2"
+  },
+  "keywords": [],
+  "type": "module",
+  "dependencies": {
+    "@types/node": "^22.10.2"
   }
 }

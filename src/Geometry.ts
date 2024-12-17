@@ -1,14 +1,4 @@
-let canvas: HTMLCanvasElement;
-let ctx: CanvasRenderingContext2D;
-
-let currentTriangle: Triangle;
-
-interface point {
-  x: number,
-  y: number,
-}
-
-class Point {
+export class Point {
   private readonly x: number;
   private readonly y: number;
 
@@ -29,18 +19,16 @@ class Point {
   }
 }
 
-function initialize():void{
-  console.log("Hello World!!!");
-  canvas = window.document.getElementById("canvas") as HTMLCanvasElement;
-  ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
-  ctx.fillRect(0, 0, 100, 100);
-}
-
-class Triangle {
+export class Triangle {
   private points: Point[];
 
   constructor(p1: Point, p2: Point, p3: Point){
     this.points = [p1, p2, p3];
+  }
+
+  public getPoints(): Point[] {
+    const newPoints = [...this.points];
+    return newPoints;
   }
   
   public isInside(vector: Point): boolean{
